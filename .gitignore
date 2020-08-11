@@ -1,0 +1,5 @@
+# Project exclude paths
+/juc/target/
+/jvm/target/
+/sysio/target/
+/target/
