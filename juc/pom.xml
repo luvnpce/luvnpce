@@ -11,5 +11,18 @@
 
     <artifactId>juc</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.8</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
