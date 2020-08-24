@@ -12,11 +12,11 @@ import java.util.concurrent.LinkedBlockingQueue;
  * 每个客户端只绑定到一个selector上
  * 多线程情况下，该主机，该程序的并发客户端被分配到多个selector上
  */
-public class SelectorThread implements Runnable {
+public class SelectorThread extends ThreadLocal<LinkedBlockingQueue<Channel>> implements Runnable {
 
     Selector selector = null;
     SelectorThreadGroup workerGroup;
-    LinkedBlockingQueue<Channel> queue = new LinkedBlockingQueue<>();
+    LinkedBlockingQueue<Channel> queue = get();
 
     public SelectorThread(SelectorThreadGroup group) {
         try {
@@ -25,6 +25,11 @@ public class SelectorThread implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    protected LinkedBlockingQueue<Channel> initialValue() {
+        return new LinkedBlockingQueue<>();
     }
 
     @Override
