@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.InetSocketAddress;
@@ -37,6 +38,13 @@ public class MyRPC {
 
     @Test
     public void startServer() {
+        MyCar myCar = new MyCar();
+        MyBike myBike = new MyBike();
+        MyDispatcher dispatcher = new MyDispatcher();
+        dispatcher.register(Car.class.getName(), myCar);
+        dispatcher.register(Bike.class.getName(), myBike);
+
+
         NioEventLoopGroup boss = new NioEventLoopGroup(20);
         NioEventLoopGroup worker = boss;
 
@@ -47,7 +55,9 @@ public class MyRPC {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         System.out.println("server accept client port: " + ch.remoteAddress().getPort());
-                        ch.pipeline().addLast(new ServerDecoder()).addLast(new ServerRequestHandler());
+                        ch.pipeline()
+                                .addLast(new ServerDecoder())
+                                .addLast(new ServerRequestHandler(dispatcher));
                     }
                 })
                 .bind(new InetSocketAddress("localhost", 9090));
@@ -253,6 +263,12 @@ class ClientResponseHandler extends ChannelInboundHandlerAdapter {
 
 class ServerRequestHandler extends ChannelInboundHandlerAdapter {
 
+    private MyDispatcher dispatcher;
+
+    public ServerRequestHandler(MyDispatcher dispatcher) {
+        this.dispatcher = dispatcher;
+    }
+
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         // 处理io
@@ -269,13 +285,30 @@ class ServerRequestHandler extends ChannelInboundHandlerAdapter {
         //      - 这个的好处就是，当一个链接发送了大量的请求，那么这个EventLoop就会一直在运作，用这个方法可以把处理分散开
         // 3. 自己创建线程池
         String ioThreadName = Thread.currentThread().getName();
-        ctx.executor().parent().next().execute(new Runnable() {
-        @Override
+        ctx.executor().execute(new Runnable() {
+            @Override
             public void run() {
+                // 通过反射找到相应的对象
+                // dubbo使用的是javassist，效率更高
+                String serviceName = pkg.getContent().getName();
+                String methodName = pkg.getContent().getMethodName();
+                Object o = dispatcher.get(serviceName);
+                Class<?> clazz = o.getClass();
+                Object result = null;
+                try {
+                    Method method = clazz.getMethod(methodName, pkg.getContent().getParameterTypes());
+                    result = method.invoke(o, pkg.getContent().getArgs());
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+
                 String executorThreadName = Thread.currentThread().getName();
-                String res = "io thread: " + ioThreadName + " exec thread: " + executorThreadName + " from args:" + pkg.getContent().getArgs()[0];
                 MyContent content = new MyContent();
-                content.setResult(res);
+                content.setResult((String) result);
                 byte[] contentBytes = SerializeUtil.doSerialize(content);
 
                 MyHeader header = new MyHeader();
