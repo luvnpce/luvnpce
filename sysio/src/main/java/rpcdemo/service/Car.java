@@ -1,4 +1,4 @@
-package rpc;
+package rpcdemo.service;
 
 public interface Car {
 

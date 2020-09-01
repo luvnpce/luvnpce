@@ -1,4 +1,6 @@
-package rpc;
+package rpcdemo.service;
+
+import rpcdemo.service.Car;
 
 public class MyCar implements Car {
 

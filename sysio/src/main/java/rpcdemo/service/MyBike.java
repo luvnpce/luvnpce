@@ -1,4 +1,6 @@
-package rpc;
+package rpcdemo.service;
+
+import rpcdemo.service.Bike;
 
 public class MyBike implements Bike {
 
