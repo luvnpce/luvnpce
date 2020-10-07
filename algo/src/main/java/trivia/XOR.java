@@ -42,7 +42,7 @@ public class XOR {
         findOddTimesNum2(arr3);
 
         System.out.println("================================================================================");
-        bitOneCount(29);
+        bitOneCount((int)(Math.random() * 1000000));
     }
 
     /**
@@ -93,6 +93,7 @@ public class XOR {
      * 统计一个数的二进制位有多少个1
      */
     public static void bitOneCount(int i) {
+        System.out.println("统计" + i + "的二进制位有多少个1");
         System.out.println(Integer.toBinaryString(i));
         int count = 0;
         while (i != 0) {
