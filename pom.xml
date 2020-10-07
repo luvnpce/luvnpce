@@ -12,6 +12,7 @@
     <module>juc</module>
       <module>jvm</module>
       <module>sysio</module>
+      <module>algo</module>
   </modules>
 
   <name>luvnpce</name>

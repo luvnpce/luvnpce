@@ -33,7 +33,7 @@ public class BulkRebias {
             for (int i = 0; i < 50; i++) {
                 SyncDemo demo = list.get(i);
                 synchronized (demo) {
-                    if (i == 18 || i == 19 || i == 25) {
+                    if (i == 18 || i == 19 || i == 45) {
                         System.out.println("打印T2线程第" + (i+1) + "个对象");
                         System.out.println(ClassLayout.parseInstance(demo).toPrintable());
                     }
@@ -46,5 +46,6 @@ public class BulkRebias {
             }
         });
         t2.start();
+
     }
 }

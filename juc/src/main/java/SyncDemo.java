@@ -3,13 +3,7 @@ import sun.misc.Unsafe;
 
 public class SyncDemo {
 
-    public static void main(String[] args) {
-        try {
-            Thread.sleep(5000);
-            System.out.println("==========Sleep for 5 secs===========");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws InterruptedException {
         SyncDemo demo = new SyncDemo();
 //        System.out.println("befor lock");
 //        System.out.println(ClassLayout.parseInstance(demo).toPrintable());
@@ -20,11 +14,15 @@ public class SyncDemo {
 //        System.out.println("after lock");
 //        System.out.println(ClassLayout.parseInstance(demo).toPrintable());
 
-        new Thread(()-> {
-            synchronized (demo){
+        Thread t1 = new Thread(() -> {
+            synchronized (demo) {
                 System.out.println("lock ing");
                 System.out.println(ClassLayout.parseInstance(demo).toPrintable());
             }
-        }).start();
+        });
+        t1.start();
+        t1.join();
+        System.out.println(ClassLayout.parseInstance(demo).toPrintable());
+
     }
 }
