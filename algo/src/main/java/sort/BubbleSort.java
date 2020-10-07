@@ -11,7 +11,7 @@ import java.util.Arrays;
  * [3, 1, 4, 5, 6]
  * [1, 3, 4, 5, 6]
  */
-public class BubbleSot {
+public class BubbleSort {
 
     public static void main(String[] args) {
 //        int[] list = {5, 1, 3, 4, 6};
