@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class MergeSort {
 
     public static void main(String[] args) {
-//        int[] list = {5, 1, 3, 4, 6};
+//        int[] list = {-8, -32, 71, 9, -82, 7, -39, -24, -2, -2, -29, 6};
         int[] list = RandomArrayGenerator.generate(20, 100);
         System.out.println(Arrays.toString(list));
 //        sort(list, 0, list.length - 1);
@@ -66,6 +66,13 @@ public class MergeSort {
 //        }
 //    }
 
+    /**
+     * 使用了一个临时数组
+     * @param list
+     * @param left
+     * @param mid
+     * @param right
+     */
     private static void merge(int[] list, int left, int mid, int right) {
         int[] help = new int[right - left + 1];
         int i = 0;
@@ -83,5 +90,37 @@ public class MergeSort {
         for (int j = 0; j < help.length; j++) {
             list[left + j] = help[j];
         }
+    }
+
+    /**
+     * in place merge
+     * @param list
+     * @param left
+     * @param mid
+     * @param right
+     */
+    private static void merge2(int[] list, int left, int mid, int right) {
+        int pos1 = left;
+        int pos2 = mid + 1;
+        while (pos1 <= mid && pos2 <= right) {
+            if (list[pos1] <= list[pos2]) {
+                pos1++;
+            } else {
+                // 我们发现了pos2的值比pos1的要小，所以我们得把pos1到pos2的值都向右移动一位，然后把pos2的值放到pos1
+                int tmp = list[pos2];
+                int i = pos2;
+                while (i > pos1) {
+                    list[i] = list[i - 1];
+                    i--;
+                }
+                list[pos1] = tmp;
+                pos1++;
+                pos2++;
+                // 这里mid需要++是因为，我们整体向右移动了一格，所以原mid的值被移动到了mid+1，所以要mid++来确保我们最后能遍历到那个值
+                mid++;
+            }
+        }
+
+
     }
 }
