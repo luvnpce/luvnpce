@@ -40,6 +40,7 @@ public class MergeSort {
                 left = right + 1;
             }
             if (k > list.length / 2) {
+                // 主要防止超出Integer最大值
                 break;
             }
             k <<= 1;
