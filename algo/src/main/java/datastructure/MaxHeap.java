@@ -62,12 +62,10 @@ public class MaxHeap {
      * @param index
      */
     private void heapInsert(int[] arr, int index) {
-        int element = arr[index];
         // 和父节点对比
-        int parent = arr[(index - 1) / 2];
-        if (element > parent) {
+        while (arr[index] > arr[(index - 1) / 2]) {
             swap(arr, index, (index - 1) / 2);
-            heapInsert(arr, (index - 1) / 2);
+            index = (index - 1) / 2;
         }
     }
 
@@ -78,18 +76,16 @@ public class MaxHeap {
      * @param heapSize
      */
     private void heapify(int[] arr, int index, int heapSize) {
-        int element = arr[index];
         // 判断有没有children
         int leftIndex = 2 * index + 1;
-        if (leftIndex >= heapSize) {
-            return;
-        }
-        // 找出左右children里最大的那个
-        int largest = leftIndex + 1 < heapSize && arr[leftIndex + 1] > arr[leftIndex] ? leftIndex + 1 : leftIndex;
-        // 判断children是否比自己大
-        if (arr[largest] > arr[index]) {
+        while (leftIndex < heapSize) {
+            int largest = leftIndex + 1 < heapSize && arr[leftIndex + 1] > arr[leftIndex] ? leftIndex + 1 : leftIndex;
+            if (arr[largest] <= arr[index]) {
+                break;
+            }
             swap(arr, index, largest);
-            heapify(arr, largest, heapSize);
+            index = largest;
+            leftIndex = 2 * index + 1;
         }
     }
 
