@@ -1,7 +1,5 @@
 package datastructure;
 
-import java.util.Arrays;
-
 /**
  * 小根堆：父节点的值小于或等于子节点的值
  * left child = 2*i + 1
