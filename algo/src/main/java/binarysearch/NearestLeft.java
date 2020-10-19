@@ -1,6 +1,6 @@
 package binarysearch;
 
-import utils.RandomArrayGenerator;
+import utils.ArrayUtils;
 
 import java.util.Arrays;
 
@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class NearestLeft {
 
     public static void main(String[] args) {
-        int[] arr = RandomArrayGenerator.generateSorted(20, 100);
+        int[] arr = ArrayUtils.generateSorted(20, 100);
         System.out.println(Arrays.toString(arr));
         int value = 29;
         System.out.println(value);

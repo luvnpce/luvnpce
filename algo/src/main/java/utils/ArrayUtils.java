@@ -2,7 +2,7 @@ package utils;
 
 import java.util.Arrays;
 
-public class RandomArrayGenerator {
+public class ArrayUtils {
 
     public static int[] generate(int maxSize, int maxValue) {
         int[] arr = new int[(int) (Math.random() * (maxSize + 1))];

@@ -1,6 +1,6 @@
 package sort;
 
-import utils.RandomArrayGenerator;
+import utils.ArrayUtils;
 
 import java.util.Arrays;
 
@@ -36,7 +36,7 @@ public class RedixSort {
 
     public static void main(String[] args) {
 //        int[] list = {5, 1, 3, 4, 6};
-        int[] arr = RandomArrayGenerator.generateAbs(10, 100);
+        int[] arr = ArrayUtils.generateAbs(10, 100);
         System.out.println(Arrays.toString(arr));
         sort(arr);
         System.out.println(Arrays.toString(arr));

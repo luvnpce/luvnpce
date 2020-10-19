@@ -1,13 +1,13 @@
 package binarysearch;
 
-import utils.RandomArrayGenerator;
+import utils.ArrayUtils;
 
 import java.util.Arrays;
 
 public class BinarySearch {
 
     public static void main(String[] args) {
-        int[] arr = RandomArrayGenerator.generateSorted(50, 100);
+        int[] arr = ArrayUtils.generateSorted(50, 100);
         int num = 15;
         System.out.println(Arrays.toString(arr));
         System.out.println(num);

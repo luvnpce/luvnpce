@@ -1,13 +1,13 @@
 package sort;
 
-import utils.RandomArrayGenerator;
+import utils.ArrayUtils;
 
 import java.util.Arrays;
 
 public class QuickSort {
 
     public static void main(String[] args) {
-        int[] arr = RandomArrayGenerator.generate(20, 100);
+        int[] arr = ArrayUtils.generate(20, 100);
         System.out.println(Arrays.toString(arr));
         sort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));

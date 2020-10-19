@@ -1,6 +1,6 @@
 package sort;
 
-import utils.RandomArrayGenerator;
+import utils.ArrayUtils;
 
 import java.util.Arrays;
 
@@ -15,7 +15,7 @@ public class BubbleSort {
 
     public static void main(String[] args) {
 //        int[] list = {5, 1, 3, 4, 6};
-        int[] list = RandomArrayGenerator.generate(10, 100);
+        int[] list = ArrayUtils.generate(10, 100);
         System.out.println(Arrays.toString(list));
         sort(list);
         System.out.println(Arrays.toString(list));

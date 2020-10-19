@@ -1,6 +1,6 @@
 package sort;
 
-import utils.RandomArrayGenerator;
+import utils.ArrayUtils;
 
 import java.util.Arrays;
 
@@ -8,7 +8,7 @@ public class MergeSort {
 
     public static void main(String[] args) {
 //        int[] list = {-8, -32, 71, 9, -82, 7, -39, -24, -2, -2, -29, 6};
-        int[] list = RandomArrayGenerator.generate(20, 100);
+        int[] list = ArrayUtils.generate(20, 100);
         System.out.println(Arrays.toString(list));
 //        sort(list, 0, list.length - 1);
         sort2(list);
