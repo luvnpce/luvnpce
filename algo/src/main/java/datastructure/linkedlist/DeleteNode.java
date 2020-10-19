@@ -2,7 +2,7 @@ package datastructure.linkedlist;
 
 import datastructure.linkedlist.structure.Node;
 
-import static utils.LinkedListUtils.assembleSingleRandom;
+import static utils.LinkedListUtils.generateSingleByRandom;
 import static utils.LinkedListUtils.printList;
 
 /**
@@ -12,7 +12,7 @@ public class DeleteNode {
 
     public static void main(String[] args) {
         System.out.println("==========单向链表删除指定的数===========");
-        Node random = assembleSingleRandom();
+        Node random = generateSingleByRandom();
         printList(random);
         int val = (int) (Math.random() * 10);
         System.out.println("删除" + val);

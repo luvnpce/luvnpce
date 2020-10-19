@@ -13,7 +13,7 @@ public class ReverseLinkedList {
     public static void main(String[] args) {
 
         System.out.println("==========翻转单向链表===========");
-        Node single = assembleSingle();
+        Node single = generateSingle();
         printList(single);
         // 翻转单向链表
         Node singleResult = reverseSingly(single);
