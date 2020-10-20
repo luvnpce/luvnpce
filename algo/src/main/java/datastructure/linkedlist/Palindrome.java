@@ -48,7 +48,9 @@ public class Palindrome {
     }
 
     /**
-     * 遍历，
+     * 1. 遍历链表，把从中间到后半段的链表翻转
+     * 2. 然后从头、尾同时开始遍历，如果值都一样则代表是palindrome
+     * 3. 记得把链表恢复原样
      * @param head
      * @return
      */
