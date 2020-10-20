@@ -16,7 +16,7 @@ public class DeleteNode {
         printList(random);
         int val = (int) (Math.random() * 10);
         System.out.println("删除" + val);
-        Node randomResult = deleteFromSingle(random, val);
+        Node randomResult = deleteFromSingleV3(random, val);
         printList(randomResult);
     }
 
@@ -59,6 +59,23 @@ public class DeleteNode {
                 prev.next = current.next;
             } else {
                 prev = current;
+            }
+            current = current.next;
+        }
+        return head;
+    }
+
+    private static Node deleteFromSingleV3(Node head, int val) {
+        while (null != head) {
+            if (head.value != val) {
+                break;
+            }
+            head = head.next;
+        }
+        Node current = head;
+        while (null != current) {
+            if (null != current.next && current.next.value == val) {
+                current.next = current.next.next;
             }
             current = current.next;
         }
