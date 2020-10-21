@@ -2,6 +2,8 @@ package datastructure.linkedlist;
 
 import datastructure.linkedlist.structure.Node;
 
+import java.time.LocalTime;
+
 import static utils.LinkedListUtils.generateSingleByRandom;
 import static utils.LinkedListUtils.printList;
 
