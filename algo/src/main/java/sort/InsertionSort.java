@@ -1,5 +1,7 @@
 package sort;
 
+import utils.ArrayUtils;
+
 import java.util.Arrays;
 
 /**
@@ -14,7 +16,7 @@ public class InsertionSort {
 
     public static void main(String[] args) {
 
-        int[] list = {5, 1, 3, 4, 6};
+        int[] list = ArrayUtils.generate(20, 100);
         System.out.println(Arrays.toString(list));
         sort(list);
         System.out.println(Arrays.toString(list));
@@ -25,7 +27,11 @@ public class InsertionSort {
         for (int i = 1; i < list.length; i++) {
             // 遍历前面的数（之前摸到的牌），如果前面的数要大于我们则swap
             for (int j = i - 1; j >= 0 && list[j] > list[j + 1]; j--) {
-                swap(list, j, j+1);
+                if (list[j] > list[j+1]) {
+                    swap(list, j, j+1);
+                } else {
+                    break;
+                }
             }
         }
     }
