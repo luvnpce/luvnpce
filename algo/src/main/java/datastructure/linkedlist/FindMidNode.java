@@ -64,10 +64,11 @@ public class FindMidNode {
     }
 
     /**
-     * 遍历一个链表，如果长度为奇数返回中节点前一个，如果长度为偶数返回上中节点前一个
+     * 遍历一个链表，如果长度为奇数返回中节点前一个，如果长度为偶数返回下中节点前一个
      * @param head
      * @return
      */
+    // 1 2 3 4 5 6
     public static Node midOrDownMidPreviousNode(Node head) {
         if (null == head || null == head.next) {
             return null;
@@ -82,5 +83,26 @@ public class FindMidNode {
             slow = slow.next;
         }
         return slow;
+    }
+
+    // 1 2 3 4 5 6 7 8
+    public static void main(String[] args) {
+        Node test = null;
+        test = new Node(1);
+        test.next = new Node(2);
+        test.next.next = new Node(3);
+        test.next.next.next = new Node(4);
+        test.next.next.next.next = new Node(5);
+        test.next.next.next.next.next = new Node(6);
+        test.next.next.next.next.next.next = new Node(7);
+        test.next.next.next.next.next.next.next = new Node(8);
+
+        Node ans1 = null;
+
+        ans1 = midOrUpMidPreviousNode(test);
+        System.out.println(ans1 != null ? ans1.value : "无");
+        ans1 = midOrDownMidPreviousNode(test);
+        System.out.println(ans1 != null ? ans1.value : "无");
+
     }
 }
