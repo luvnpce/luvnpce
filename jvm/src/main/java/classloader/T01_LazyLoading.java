@@ -1,4 +1,4 @@
-package ClassLoader;
+package classloader;
 
 public class T01_LazyLoading {
 

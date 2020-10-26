@@ -1,4 +1,4 @@
-package ReferenceTypes;
+package referencetype;
 
 public class M {
 

@@ -1,4 +1,4 @@
-package ReferenceTypes;
+package referencetype;
 
 import java.lang.ref.PhantomReference;
 import java.lang.ref.Reference;
