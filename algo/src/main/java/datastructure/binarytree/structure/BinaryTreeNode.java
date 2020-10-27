@@ -8,6 +8,9 @@ public class BinaryTreeNode {
 
     public BinaryTreeNode right;
 
+    // 特定问题用到
+    public BinaryTreeNode parent;
+
     public BinaryTreeNode(int value) {
         this.value = value;
     }
