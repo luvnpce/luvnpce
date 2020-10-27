@@ -13,6 +13,7 @@
       <module>jvm</module>
       <module>sysio</module>
       <module>algo</module>
+      <module>tools</module>
   </modules>
 
   <name>luvnpce</name>
