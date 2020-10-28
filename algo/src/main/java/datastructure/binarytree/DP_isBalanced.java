@@ -2,6 +2,8 @@ package datastructure.binarytree;
 
 import datastructure.binarytree.structure.BinaryTreeNode;
 
+import static utils.BinaryTreeUtils.generateRandomBST;
+
 /**
  * 判断一个二叉树是不是平衡树
  * 如何判断：
@@ -60,22 +62,6 @@ public class DP_isBalanced {
             isBalanced = false;
         }
         return new Info(isBalanced, height);
-    }
-
-    // for test
-    public static BinaryTreeNode generateRandomBST(int maxLevel, int maxValue) {
-        return generate(1, maxLevel, maxValue);
-    }
-
-    // for test
-    public static BinaryTreeNode generate(int level, int maxLevel, int maxValue) {
-        if (level > maxLevel || Math.random() < 0.5) {
-            return null;
-        }
-        BinaryTreeNode head = new BinaryTreeNode((int) (Math.random() * maxValue));
-        head.left = generate(level + 1, maxLevel, maxValue);
-        head.right = generate(level + 1, maxLevel, maxValue);
-        return head;
     }
 
     // 左、右要求一样，Info 信息返回的结构体
