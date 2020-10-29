@@ -1,6 +1,5 @@
 package datastructure.binarytree;
 
-import datastructure.MaxHeap;
 import datastructure.binarytree.structure.BinaryTreeNode;
 
 /**

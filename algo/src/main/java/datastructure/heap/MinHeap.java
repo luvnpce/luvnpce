@@ -1,18 +1,18 @@
-package datastructure;
+package datastructure.heap;
 
 /**
- * 大根堆：父节点的值大于或等于子节点的值
+ * 小根堆：父节点的值小于或等于子节点的值
  * left child = 2*i + 1
  * right child = 2*i + 2
  * parent = (i-1)/2
  */
-public class MaxHeap {
+public class MinHeap {
 
     private int[] heap;
     private int limit;
     private int heapSize;
 
-    public MaxHeap(int limit) {
+    public MinHeap(int limit) {
         this.heapSize = 0;
         this.limit = limit;
         this.heap = new int[limit];
@@ -27,7 +27,7 @@ public class MaxHeap {
     }
 
     /**
-     * 取出最大的数，保证剩余的数还是大根堆
+     * 取出最小的数，保证剩余的数还是小根堆
      * @return
      */
     public int pop() {
@@ -56,21 +56,21 @@ public class MaxHeap {
     }
 
     /**
-     * 插入数在堆的最后，保证大根堆成立
+     * 插入数在堆的最后，保证小根堆成立
      * O(logN)
      * @param arr
      * @param index
      */
     private void heapInsert(int[] arr, int index) {
         // 和父节点对比
-        while (arr[index] > arr[(index - 1) / 2]) {
+        while (arr[index] < arr[(index - 1) / 2]) {
             swap(arr, index, (index - 1) / 2);
             index = (index - 1) / 2;
         }
     }
 
     /**
-     * 向下比较，跟比自己大的（最大的）child互换位置
+     * 向下比较，跟比自己小的（最小的）child互换位置
      * @param arr
      * @param index
      * @param heapSize
@@ -79,22 +79,22 @@ public class MaxHeap {
         // 判断有没有children
         int leftIndex = 2 * index + 1;
         while (leftIndex < heapSize) {
-            int largest = leftIndex + 1 < heapSize && arr[leftIndex + 1] > arr[leftIndex] ? leftIndex + 1 : leftIndex;
-            if (arr[largest] <= arr[index]) {
+            int smallest = leftIndex + 1 < heapSize && arr[leftIndex + 1] < arr[leftIndex] ? leftIndex + 1 : leftIndex;
+            if (arr[smallest] >= arr[index]) {
                 break;
             }
-            swap(arr, index, largest);
-            index = largest;
+            swap(arr, index, smallest);
+            index = smallest;
             leftIndex = 2 * index + 1;
         }
     }
 
-    public static class RightMaxHeap {
+    public static class RightMinHeap {
         private int[] arr;
         private final int limit;
         private int size;
 
-        public RightMaxHeap(int limit) {
+        public RightMinHeap(int limit) {
             arr = new int[limit];
             this.limit = limit;
             size = 0;
@@ -116,14 +116,14 @@ public class MaxHeap {
         }
 
         public int pop() {
-            int maxIndex = 0;
+            int minIndex = 0;
             for (int i = 1; i < size; i++) {
-                if (arr[i] > arr[maxIndex]) {
-                    maxIndex = i;
+                if (arr[i] <arr[minIndex]) {
+                    minIndex = i;
                 }
             }
-            int ans = arr[maxIndex];
-            arr[maxIndex] = arr[--size];
+            int ans = arr[minIndex];
+            arr[minIndex] = arr[--size];
             return ans;
         }
 
@@ -136,8 +136,8 @@ public class MaxHeap {
         int testTimes = 100000;
         for (int i = 0; i < testTimes; i++) {
             int curLimit = (int) (Math.random() * limit) + 1;
-            MaxHeap my = new MaxHeap(curLimit);
-            RightMaxHeap test = new RightMaxHeap(curLimit);
+            MinHeap my = new MinHeap(curLimit);
+            RightMinHeap test = new RightMinHeap(curLimit);
             int curOpTimes = (int) (Math.random() * limit);
             for (int j = 0; j < curOpTimes; j++) {
                 if (my.isEmpty() != test.isEmpty()) {
@@ -160,15 +160,16 @@ public class MaxHeap {
                         my.push(curValue);
                         test.push(curValue);
                     } else {
-                        if (my.pop() != test.pop()) {
-                            System.out.println("Oops!");
+                        int num1 = my.pop();
+                        int num2 = test.pop();
+                        if (num1 != num2) {
+                            System.out.println("xxxOops!" + num1 + ":" + num2);
                         }
                     }
                 }
             }
         }
         System.out.println("finish!");
-
     }
 
 }
