@@ -13,7 +13,7 @@ public class ConvertLetterToString {
 
     public static void main(String[] args) {
         char[] dict = "?abcdefghijklnmopqrstuvwxyz".toCharArray();
-        String str = "123"; // abc, lc, aw
+        String str = "11111"; // abc, lc, aw
         char[] input = str.toCharArray();
         String path = "";
         List<String> res = new LinkedList<>();
@@ -21,7 +21,6 @@ public class ConvertLetterToString {
         for (String s : res) {
             System.out.println(s);
         }
-
     }
 
 
