@@ -9,7 +9,7 @@ import java.util.PriorityQueue;
 import java.util.Set;
 
 /**
- * 最小生成树算法之Prim
+ * 最小生成树(Minimum Spanning Tree)算法之Prim
  * 1. 随便指定一个起始Node A，解锁这个Node A的所有Edge
  * 2. 选择权值最小的那个Edge x
  * 3. 判断这个x的两侧有没有未解锁的Node：

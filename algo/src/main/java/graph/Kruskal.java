@@ -7,7 +7,7 @@ import graph.structure.Node;
 import java.util.*;
 
 /**
- * 最小生成树算法之Kruskal
+ * 最小生成树(Minimum Spanning Tree)算法之Kruskal
  * - 总是从权值最小的Edge开始考虑，依次考察权值依次变大的Edge
  * - 当前的Edge要么进入最小生成树的集合，要么丢弃
  * - 如果当前的Edge进入最小生成树的集合中不会形成环，就要当前Edge
