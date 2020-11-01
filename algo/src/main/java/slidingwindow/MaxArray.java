@@ -29,6 +29,7 @@ public class MaxArray {
                 // 如果窗口左侧移除的数是双向队列里的头部，将头部弹出
                 qmax.pollFirst();
             }
+            // 以上窗口更新做完了，下面开始组装res
             if (right >= w - 1) {
                 // 当我们的窗口覆盖了[0...w-1]时候开始，记录每次移动时窗口的最大值
                 res[index++] = arr[qmax.peekFirst()];
