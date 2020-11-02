@@ -12,6 +12,13 @@ import java.util.Random;
  */
 public class GenerateOneToTen {
 
+    public static void main(String[] args) {
+        GenerateOneToTen main = new GenerateOneToTen();
+        for (int i = 0; i < 100; i++) {
+            System.out.println(main.fun10());
+        }
+    }
+
     public int fun10() {
         int x = 10;
         while (x >= 10) {
