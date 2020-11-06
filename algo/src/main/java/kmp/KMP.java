@@ -53,8 +53,8 @@ public class KMP {
         int[] next = new int[arr.length];
         next[0] = -1;
         next[1] = 0;
+        int cn = 0; // 默认为next[1]的值
         int i = 2;
-        int cn = 0;
 
         /**
          * 在处理i时，查看next[i-1]的值cn，然后判断arr[i-1]是否和arr[cn]相等

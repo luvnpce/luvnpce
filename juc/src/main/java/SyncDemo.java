@@ -1,5 +1,4 @@
 import org.openjdk.jol.info.ClassLayout;
-import sun.misc.Unsafe;
 
 public class SyncDemo {
 
@@ -14,6 +13,7 @@ public class SyncDemo {
 //        System.out.println("after lock");
 //        System.out.println(ClassLayout.parseInstance(demo).toPrintable());
 
+        Thread.sleep(1000);
         Thread t1 = new Thread(() -> {
             synchronized (demo) {
                 System.out.println("lock ing");
@@ -22,6 +22,7 @@ public class SyncDemo {
         });
         t1.start();
         t1.join();
+
         System.out.println(ClassLayout.parseInstance(demo).toPrintable());
 
     }
