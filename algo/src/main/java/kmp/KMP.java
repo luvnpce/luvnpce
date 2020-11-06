@@ -8,9 +8,9 @@ package kmp;
 public class KMP {
 
     public static void main(String[] args) {
-        String a = "1";
-        String b = "12";
-        System.out.println(brute(a, b));
+        String a = "123456123456";
+        String b = "612345";
+        System.out.println(kmp(a, b));
     }
 
     /**
