@@ -8,13 +8,22 @@ package kmp;
 public class KMP {
 
     public static void main(String[] args) {
-        String a = "123456123456";
+        String a = "612346123456";
         String b = "612345";
         System.out.println(kmp(a, b));
     }
 
     /**
      * KMP算法：O(N)
+     * 算是一种加速算法
+     * 假设a = "aaaaaab"，b = "aaab"
+     * 当我们从a[0]开始，比对到i = 3的时候，a[3] != b[3]，此时我们不需要回到a[1]为起点重头开始比
+     * 而是可以通过next数组，停留在a[3]，然后和b[2]开始比对，因为next[3] = 2。
+     * 这个2代表的是，b的后缀2位字符 是和 b的前缀2位字符是相等的
+     * 那么我们可以省略掉
+     *      a[1] == b[0]
+     *      a[2] == b[1]
+     * 的比较，直接从a[3] == b[2]开始，从而得到加速
      */
     public static int kmp(String a, String b) {
         if (null == a || null == b || b.length() < 1 || a.length() < b.length()) {
@@ -39,12 +48,15 @@ public class KMP {
     }
 
     /**
-     * 计算PMT数组
-     * PMT中的值是字符串的前缀集合与后缀集合的交集中最长元素的长度
+     * 计算next数组
+     * next[i]的含义就是在i之前的字符串中[0...i-1]，以0位置开头且不包含i-1位置的<前缀子字符串>
+     * 和以i-1位置结尾且不包含0开头位置的<后缀子字符串>它们之间的最大匹配长度是多少
      * 默认:
      *  arr[0] = -1
      *  arr[1] = 0
-     * O(M)
+     * 列子：
+     *  str = "aaaab"，next[4] = 3，因为str[0...2] = "aaa"，str[1...3] = "aaa"
+     * 时间复杂度：O(M)
      */
     private static int[] getNextArr(char[] arr) {
         if (arr.length == 1) {
