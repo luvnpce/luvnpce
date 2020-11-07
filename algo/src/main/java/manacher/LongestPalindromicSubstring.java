@@ -3,7 +3,9 @@ package manacher;
 import utils.StringUtils;
 
 /**
- * 求一个字符串的最大回文子串
+ * 求一个字符串的最大回文子串的长度
+ * abcba
+ * #a#b#c#b#a#
  */
 public class LongestPalindromicSubstring {
 
