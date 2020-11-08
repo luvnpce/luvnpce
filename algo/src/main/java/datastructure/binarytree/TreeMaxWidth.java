@@ -65,6 +65,14 @@ public class TreeMaxWidth {
         return max;
     }
 
+    /**
+     * 使用bfs遍历，用两个变量来记录
+     *  - curEnd：当前层的最右节点
+     *  - nextEnd：下一层的最右节点
+     *  如果当前遍历到的节点是当前的层的最右节点，那么
+     *  - curEnd = nextEnd
+     *  - 然后统计当前层的宽度，更新max值
+     */
     public static int maxWidthNoMap(BinaryTreeNode head) {
         if (null == head) {
             return 0;
@@ -89,7 +97,7 @@ public class TreeMaxWidth {
             }
             if (null != node.right) {
                 queue.add(node.right);
-                // 这里就等于把方面赋值的nextEnd更新了，但是我们也不需要关心node.right是不是最右
+                // 这里就等于把上面赋值的nextEnd更新了，但是我们也不需要关心node.right是不是最右
                 // 如果不是那么就意味着这一层还没结束，那么下一个node会把自己的child赋值给nextEnd
                 nextEnd = node.right;
             }
