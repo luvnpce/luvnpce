@@ -12,8 +12,8 @@ import java.util.*;
  *            / \   / \
  *           4     6   7
  *  先序：[1, 2, 4, null, null, null, 3, 6, null, null, 7, null, null]
- *  中序：[2, 4, null, null, null, 1, 3, 6, null, null, 7, null, null]
- *  后序：[2, 4, null, null, null, 3, 6, null, null, 7, null, null, 1]
+ *  中序：[null, 4, null, 2, null, 1, null, 6, null, 3, null, 7, null]
+ *  后序：[null, null, 4, null, 2, null, null, 6, null, null, 7, 3, 1]
  *  bfs：[1, 2, 3, 4, null, 6, 7, null, null, null, null, null, null]
  */
 public class SerializeBinaryTree {
@@ -82,9 +82,9 @@ public class SerializeBinaryTree {
         if (node == null) {
             queue.add(null);
         } else {
-            doPre(node.left, queue);
+            doIn(node.left, queue);
             queue.add(String.valueOf(node.value));
-            doPre(node.right, queue);
+            doIn(node.right, queue);
         }
     }
 
@@ -95,8 +95,8 @@ public class SerializeBinaryTree {
         if (node == null) {
             queue.add(null);
         } else {
-            doPre(node.left, queue);
-            doPre(node.right, queue);
+            doPos(node.left, queue);
+            doPos(node.right, queue);
             queue.add(String.valueOf(node.value));
         }
     }

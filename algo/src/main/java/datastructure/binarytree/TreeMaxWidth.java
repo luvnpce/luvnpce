@@ -8,8 +8,6 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
-import static utils.BinaryTreeUtils.generateRandomBST;
-
 /**
  * 找出二叉树中哪一层最宽
  *               1
@@ -111,7 +109,7 @@ public class TreeMaxWidth {
         int maxValue = 100;
         int testTimes = 1000000;
         for (int i = 0; i < testTimes; i++) {
-            BinaryTreeNode head = BinaryTreeUtils.generateRandomBST(maxLevel, maxValue);
+            BinaryTreeNode head = BinaryTreeUtils.generateRandomBT(maxLevel, maxValue);
             if (maxWidthUseMap(head) != maxWidthNoMap(head)) {
                 System.out.println("Oops!");
             }

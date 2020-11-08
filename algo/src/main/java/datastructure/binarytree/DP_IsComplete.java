@@ -5,7 +5,7 @@ import datastructure.binarytree.structure.BinaryTreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import static utils.BinaryTreeUtils.generateRandomBST;
+import static utils.BinaryTreeUtils.generateRandomBT;
 
 /**
  * 判断是不是完全二叉树
@@ -18,7 +18,7 @@ public class DP_IsComplete {
         int maxValue = 100;
         int testTimes = 1000000;
         for (int i = 0; i < testTimes; i++) {
-            BinaryTreeNode head = generateRandomBST(maxLevel, maxValue);
+            BinaryTreeNode head = generateRandomBT(maxLevel, maxValue);
             if (isCompleteByBFS(head) != isCompleteByRecursion(head)) {
                 System.out.println("Oops!");
             }

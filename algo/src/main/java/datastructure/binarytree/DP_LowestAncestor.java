@@ -19,7 +19,7 @@ public class DP_LowestAncestor {
         int maxValue = 100;
         int testTimes = 1000000;
         for (int i = 0; i < testTimes; i++) {
-            BinaryTreeNode head = generateRandomBST(maxLevel, maxValue);
+            BinaryTreeNode head = generateRandomBT(maxLevel, maxValue);
             BinaryTreeNode o1 = pickRandomOne(head);
             BinaryTreeNode o2 = pickRandomOne(head);
             if (findAncestorByRecursion(head, o1, o2) != findAncestorByMap(head, o1, o2)) {

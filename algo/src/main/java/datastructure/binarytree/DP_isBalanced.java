@@ -2,7 +2,7 @@ package datastructure.binarytree;
 
 import datastructure.binarytree.structure.BinaryTreeNode;
 
-import static utils.BinaryTreeUtils.generateRandomBST;
+import static utils.BinaryTreeUtils.generateRandomBT;
 
 /**
  * 判断一个二叉树是不是平衡树
@@ -19,7 +19,7 @@ public class DP_isBalanced {
         int maxValue = 100;
         int testTimes = 1000000;
         for (int i = 0; i < testTimes; i++) {
-            BinaryTreeNode head = generateRandomBST(maxLevel, maxValue);
+            BinaryTreeNode head = generateRandomBT(maxLevel, maxValue);
             if (isBalanced1(head) != isBalanced2(head)) {
                 System.out.println("Oops!");
             }

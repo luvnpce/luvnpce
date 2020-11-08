@@ -18,8 +18,8 @@ public class TreeEqual {
         int testTimes = 10000;
         System.out.println("test begin");
         for (int i = 0; i < testTimes; i++) {
-            BinaryTreeNode big = BinaryTreeUtils.generateRandomBST(bigTreeLevel, nodeMaxValue);
-            BinaryTreeNode small = BinaryTreeUtils.generateRandomBST(smallTreeLevel, nodeMaxValue);
+            BinaryTreeNode big = BinaryTreeUtils.generateRandomBT(bigTreeLevel, nodeMaxValue);
+            BinaryTreeNode small = BinaryTreeUtils.generateRandomBT(smallTreeLevel, nodeMaxValue);
             boolean ans1 = brute(big, small);
             boolean ans2 = kmp(big, small);
             if (ans1 != ans2) {
