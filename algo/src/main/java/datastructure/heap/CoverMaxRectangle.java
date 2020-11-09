@@ -36,10 +36,13 @@ public class CoverMaxRectangle {
      *      - 以该矩形i的底线为界限，清除掉那些顶在该矩形底下面的，因为他们不可能重叠
      *      - 现在leftOrdered里面只存有包含这个底线的矩形，那么就变成了线段重合的问题
      * ==================================================================
+     * 时间复杂度：
      * 矩形数量是N
-     *    O(N*LogN)
+     *    O(N*LogN) 排序
      *     +
      *    O(N) * [ O(N) + O(N *LogN) ]
+     *    =
+     *    O(N^2 * LogN)
      */
     public static int maxCover(Rectangle[] recs) {
         if (recs == null || recs.length == 0) {
