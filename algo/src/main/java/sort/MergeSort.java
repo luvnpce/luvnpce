@@ -1,12 +1,14 @@
 package sort;
 
+import utils.ArrayUtils;
+
 import java.util.Arrays;
 
 public class MergeSort {
 
     public static void main(String[] args) {
-        int[] list = {3,7,4,2,6,1};
-//        int[] list = ArrayUtils.generate(20, 100);
+//        int[] list = {3,7,4,2,6,1};
+        int[] list = ArrayUtils.generate(20, 100);
         System.out.println(Arrays.toString(list));
 //        sort(list, 0, list.length - 1);
         sort2(list);
@@ -39,7 +41,7 @@ public class MergeSort {
     private static void sort2(int[] list) {
         int k = 1;
         while (k < list.length) {
-            System.out.println(k);
+//            System.out.println(k);
             int left = 0;
             while (left < list.length) {
                 int mid = left + k - 1;
@@ -55,7 +57,7 @@ public class MergeSort {
                 break;
             }
             k <<= 1;
-            System.out.println(Arrays.toString(list));
+//            System.out.println(Arrays.toString(list));
         }
     }
 
