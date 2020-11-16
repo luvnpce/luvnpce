@@ -1,14 +1,12 @@
 package sort;
 
-import utils.ArrayUtils;
-
 import java.util.Arrays;
 
 public class MergeSort {
 
     public static void main(String[] args) {
-//        int[] list = {-8, -32, 71, 9, -82, 7, -39, -24, -2, -2, -29, 6};
-        int[] list = ArrayUtils.generate(20, 100);
+        int[] list = {3,7,4,2,6,1};
+//        int[] list = ArrayUtils.generate(20, 100);
         System.out.println(Arrays.toString(list));
 //        sort(list, 0, list.length - 1);
         sort2(list);
@@ -25,6 +23,19 @@ public class MergeSort {
         merge(list, left, mid, right);
     }
 
+    /**
+     * 迭代的mergesort
+     * 选一个步长变量k，步长等于left到mid的长度
+     * k从1开始，每次*2
+     * ====================
+     * 假设数组arr = [3,7,4,2,6,1]
+     * k = 1
+     * 我们merge [3,7] [4,2] [6,1] = [3,7,2,4,1,6]
+     * k = 2
+     * 我们merge [3,7,2,4] [1,6] = [2,3,4,7,1,6]
+     * k = 4
+     * 我们merge [2,3,4,7,1,6] = [1,2,3,4,6,7]
+     */
     private static void sort2(int[] list) {
         int k = 1;
         while (k < list.length) {
@@ -44,6 +55,7 @@ public class MergeSort {
                 break;
             }
             k <<= 1;
+            System.out.println(Arrays.toString(list));
         }
     }
 
