@@ -1,5 +1,7 @@
 package sort;
 
+import utils.ArrayUtils;
+
 /**
  * 在一个数组中，一个数左边比它小的数的总和，叫作数的小和。所有数的小和累加起来，叫做数组小和。求数组小和
  * [1,3,4,2,5]
@@ -10,12 +12,30 @@ package sort;
  * 5的小和 = 1 + 3 + 4 + 2
  * 数组的小和 = 16
  */
-public class MergeSmallSum {
+public class MergeSort_SmallSum {
 
     public static void main(String[] args) {
-        int[] arr = new int[] {1, 3, 4, 2, 5};
-        int sum = sum(arr, 0, arr.length - 1);
-        System.out.println(sum);
+        System.out.println("Start");
+        int times = 10000;
+        for (int i = 0; i < times; i++) {
+            int[] arr = ArrayUtils.generateAbs(20, 200);
+            if (brute(arr) != sum(arr, 0, arr.length -1 )) {
+                return;
+            }
+        }
+        System.out.println("Done");
+    }
+
+    private static int brute(int[] arr) {
+        int sum = 0;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            for (int j = i; j >= 0; j--) {
+                if (arr[j] < arr[i]) {
+                    sum += arr[j];
+                }
+            }
+        }
+        return sum;
     }
 
     private static int sum(int[] arr, int left, int right) {
