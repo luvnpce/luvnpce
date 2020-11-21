@@ -59,7 +59,7 @@ public class MyBinarySearchTree {
         }
     }
 
-    private BinaryTreeNode doDelete(BinaryTreeNode node) {
+    protected BinaryTreeNode doDelete(BinaryTreeNode node) {
         BinaryTreeNode res = null;
         if (null != node) {
             if (null == node.left) {
@@ -89,7 +89,7 @@ public class MyBinarySearchTree {
         return res;
     }
 
-    private BinaryTreeNode getMinimum(BinaryTreeNode node) {
+    protected BinaryTreeNode getMinimum(BinaryTreeNode node) {
         while (null != node && null != node.left) {
             node = node.left;
         }
