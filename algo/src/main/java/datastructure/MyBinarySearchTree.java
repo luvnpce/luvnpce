@@ -3,6 +3,7 @@ package datastructure;
 import datastructure.binarytree.structure.BinaryTreeNode;
 
 /**
+ * 最基本的BinarySearchTree
  * worstcase：insert的数是升序，就等于一个链表
  */
 public class MyBinarySearchTree {
