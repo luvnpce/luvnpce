@@ -48,15 +48,15 @@ public class MergeSort_RangeSum {
          * 找出满足：sum[j] > min && sum[j] <= max的范围
          *
          */
-//        for (int i = mid + 1; i <= right ; i++) {
-//            for (int j = left; j <= mid; j++) {
-//                if (lower + sum[j] <= sum[i] && sum[i] <= sum[j] + upper) {
-//                    ans++;
-//                }
-//            }
-//        }
+        /*for (int i = mid + 1; i <= right ; i++) {
+            for (int j = left; j <= mid; j++) {
+                if (lower + sum[j] <= sum[i] && sum[i] <= sum[j] + upper) {
+                    ans++;
+                }
+            }
+        }*/
         /**
-         * 优化（换一次思路）：
+         * 优化（换一下思路）：
          * 必须以0位置结尾的子数组 有几个达标
          * 必须以1位置结尾的子数组 有几个达标
          * 必须以2位置结尾的子数组 有几个达标
@@ -71,18 +71,19 @@ public class MergeSort_RangeSum {
         // 我们从i=mid+1开始，是因为[left...mid]这个范围内的答案已经是merge之前就算好的
         // merge是要考虑两个半区之间还有没有正确答案
         for (int i = mid + 1; i <= right; i++) {
+            // 以i位置结尾，有几个达标的子数组
             long min = sum[i] - upper;
             long max = sum[i] - lower;
             // 找出累加和在[min,max]范围内的最右位置+1
             while (windowR <= mid && sum[windowR] <= max) {
                 windowR++;
             }
-            // 找出累加和在[min,max]范围内的最左位置-1
+            // 找出累加和在[min,max]范围内的最左位置
             while (windowL <= mid && sum[windowL] < min) {
                 windowL++;
             }
             // 最左和最右之间的都是达标的
-            ans += Math.max(0, windowR - windowL);
+            ans += (windowR - windowL);
         }
 
         long[] helper = new long[right - left + 1];
