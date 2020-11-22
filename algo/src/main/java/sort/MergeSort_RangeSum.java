@@ -8,6 +8,7 @@ package sort;
  * 输出: 3
  * 解释: 3个区间分别是: [0,0], [2,2], [0,2]，它们表示的和分别为: -2, -1, 2。
  *
+ * 前置知识：找sum[a....b]的累加和 = sum[0...b] - sum[0...a-1]
  */
 public class MergeSort_RangeSum {
 
@@ -47,12 +48,41 @@ public class MergeSort_RangeSum {
          * 找出满足：sum[j] > min && sum[j] <= max的范围
          *
          */
-        for (int i = mid + 1; i <= right ; i++) {
-            for (int j = left; j <= mid; j++) {
-                if (lower + sum[j] <= sum[i] && sum[i] <= sum[j] + upper) {
-                    ans++;
-                }
+//        for (int i = mid + 1; i <= right ; i++) {
+//            for (int j = left; j <= mid; j++) {
+//                if (lower + sum[j] <= sum[i] && sum[i] <= sum[j] + upper) {
+//                    ans++;
+//                }
+//            }
+//        }
+        /**
+         * 优化（换一次思路）：
+         * 必须以0位置结尾的子数组 有几个达标
+         * 必须以1位置结尾的子数组 有几个达标
+         * 必须以2位置结尾的子数组 有几个达标
+         * 最后累加所有个达标数
+         * ============================
+         * 假设i = 10，我们看以10位置结尾的子数组有几个达标
+         * arr[0...10]的累加和 = 100, lower = 20, upper = 40
+         * 那么我们就要找arr[0...j]的累加和是在[60,80]之间，j < 10
+         */
+        int windowL = left;
+        int windowR = left;
+        // 我们从i=mid+1开始，是因为[left...mid]这个范围内的答案已经是merge之前就算好的
+        // merge是要考虑两个半区之间还有没有正确答案
+        for (int i = mid + 1; i <= right; i++) {
+            long min = sum[i] - upper;
+            long max = sum[i] - lower;
+            // 找出累加和在[min,max]范围内的最右位置+1
+            while (windowR <= mid && sum[windowR] <= max) {
+                windowR++;
             }
+            // 找出累加和在[min,max]范围内的最左位置-1
+            while (windowL <= mid && sum[windowL] < min) {
+                windowL++;
+            }
+            // 最左和最右之间的都是达标的
+            ans += Math.max(0, windowR - windowL);
         }
 
         long[] helper = new long[right - left + 1];

@@ -17,4 +17,10 @@
         * RR：node左旋一次解决
         * RL：node.right右旋（改成RR），然后node左旋
 * Size Balanced树：每棵子树的大小不小于其兄弟的子树大小
+    * node违规情况：
+        * LL：node.right大小 < node.left.left，node右旋解决
+        * LR：node.right大小 < node.left.right，node.left左旋（改成LL），然后node右旋
+        * RR：node.left大小 < node.right.right，node左旋解决
+        * RL：node.left大小 < node.right.left，node.right右旋（改成RR），然后node左旋
+    * 平衡性没有AVL严格，所以效率更高
 * 红黑树：树的最长路径不大于最短路径长度的两倍
