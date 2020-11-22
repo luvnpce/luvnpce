@@ -17,14 +17,14 @@ public class QuickSort {
         if (left >= right) {
             return;
         }
-        int pivot = partition(arr, left, right);
-        sort(arr, left, pivot - 1);
-        sort(arr, pivot + 1, right);
+        int[] equalArea = partition(arr, left, right);
+        sort(arr, left, equalArea[0] - 1);
+        sort(arr, equalArea[1] + 1, right);
     }
 
-    private static int partition(int[] arr, int left, int right) {
+    private static int[] partition(int[] arr, int left, int right) {
         if (left == right) {
-            return left;
+            return new int[] {left, right};
         }
         int val = arr[right];
         int less = left - 1;
@@ -41,7 +41,7 @@ public class QuickSort {
             }
         }
         swap(arr, more, right);
-        return more;
+        return new int[] {less + 1, more};
     }
 
     private static void swap(int[] arr, int a, int b) {
