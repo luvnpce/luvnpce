@@ -17,7 +17,7 @@ public class LightLamp {
         for (int i = 0; i < testTime; i++) {
             String str = randomString(len);
             int ans1 = brute(str);
-            int ans2 = greey(str);
+            int ans2 = greedy(str);
             if (ans1 != ans2) {
                 System.out.println("oops!");
             }
@@ -34,7 +34,7 @@ public class LightLamp {
      *              - i+2位置是X，在i+1放灯，移动到i+3
      *              - i+2位置是.，在i+1放灯，移动到i+3
      */
-    private static int greey(String str) {
+    private static int greedy(String str) {
         if (null == str || str.length() == 0) {
             return 0;
         }
