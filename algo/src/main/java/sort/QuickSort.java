@@ -17,6 +17,7 @@ public class QuickSort {
         if (left >= right) {
             return;
         }
+        swap(arr, left + (int) (Math.random() * (right - left + 1)), right);
         int[] equalArea = partition(arr, left, right);
         sort(arr, left, equalArea[0] - 1);
         sort(arr, equalArea[1] + 1, right);
