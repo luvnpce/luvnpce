@@ -19,6 +19,9 @@ public class Trie {
         root = new TrieNode();
     }
 
+    /**
+     * O(M), M = 总字符长度
+     */
     public void insert(String word) {
         if (null == word) {
             return;
@@ -78,6 +81,7 @@ public class Trie {
                 int key = (int) chars[i];
                 if (--current.path.get(key).pass == 0) {
                     current.path.remove(key);
+                    return;
                 } else {
                     current = current.path.get(key);
                 }
