@@ -71,7 +71,7 @@ public class RedixSort {
                 j = getDigit(arr[i], d);
                 count[j]++;
             }
-            // 得出在这个位数上，i = 0~9, 小于等于i的数出现过几次
+            // 对count[]计算PrefixSum，得出在这个位数上，i = 0~9, 小于等于i的数出现过几次
             for (i = 1; i < radix; i++) {
                 count[i] = count[i] + count[i-1];
             }
