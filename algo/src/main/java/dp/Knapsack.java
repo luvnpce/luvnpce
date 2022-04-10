@@ -16,7 +16,19 @@ public class Knapsack {
 
     public static int dp(int[] weights, int[] values, int bag) {
         int N = weights.length;
+        /**
+         * 行：0->N
+         * 列：0->bag
+         * ex：N = 4, bag = 6
+         *      0   1   2   3   4   5   6
+         * 0    0
+         * 1    0
+         * 2    0
+         * 3    0
+         * 4    0   0   0   0   0   0   0
+         */
         int[][] dp = new int[N+1][bag+1];
+        // 填写dp
         for (int index = N - 1; index >= 0; index--) {
             for (int rest = 0; rest <= bag; rest++) {
                 int p1 = dp[index+1][rest];
