@@ -15,11 +15,6 @@ package lesson2;
  */
 public class Lesson2_2 {
 
-    public static void main(String[] args) {
-        String str = "00001";
-        System.out.println(Long.valueOf(str).intValue());
-    }
-
     /**
      * 1、从左到右，找出数组最右侧已经排好序的部分
      * 2、从右到左，找出数组最左侧已经排好序的部分
