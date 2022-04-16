@@ -1,5 +1,8 @@
 package leetcode;
 
+import utils.ArrayUtils;
+
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -12,7 +15,16 @@ import java.util.HashMap;
  */
 public class LeetCode_1_2Sum {
 
-    public int[] unsortedArray(int[] nums, int target) {
+    public static void main(String[] args) {
+        int[] nums = ArrayUtils.generate(100, 50);
+        int[] ans1 = unsortedArray(nums, 10);
+        System.out.println(nums[ans1[0]] + ", " + nums[ans1[1]]);
+        Arrays.sort(nums);
+        int[] ans2 = sortedArray(nums, 10);
+        System.out.println(nums[ans2[0]] + ", " + nums[ans2[1]]);
+    }
+
+    public static int[] unsortedArray(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int[] result = null;
         for (int i = 0; i < nums.length; i++) {
@@ -28,7 +40,7 @@ public class LeetCode_1_2Sum {
     /**
      * 如果数组已经是有序的，直接用双指针，可以节省使用hashmap的空间
      */
-    public int[] sortedArray(int[] nums, int target) {
+    public static int[] sortedArray(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
 
