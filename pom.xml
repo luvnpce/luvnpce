@@ -15,7 +15,6 @@
       <module>algo</module>
       <module>tools</module>
       <module>algo-questions</module>
-      <module>algo-top-interviews</module>
   </modules>
 
   <name>luvnpce</name>

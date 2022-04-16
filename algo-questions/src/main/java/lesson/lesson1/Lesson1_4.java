@@ -1,4 +1,4 @@
-package lesson1;
+package lesson.lesson1;
 
 /**
  * 数组只有两种字符g,b,所有g放在左侧,b放在右侧,或所有g放在右侧,所有b放在左侧返回至少交换几次

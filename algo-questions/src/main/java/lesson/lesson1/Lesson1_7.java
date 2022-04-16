@@ -1,4 +1,4 @@
-package lesson1;
+package lesson.lesson1;
 
 /**
  * 两个非负数组x和hp,长度都是N，再给定一个正数range

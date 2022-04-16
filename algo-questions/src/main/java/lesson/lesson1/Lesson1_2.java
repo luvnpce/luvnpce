@@ -1,4 +1,4 @@
-package lesson1;
+package lesson.lesson1;
 
 import java.io.File;
 import java.util.LinkedList;

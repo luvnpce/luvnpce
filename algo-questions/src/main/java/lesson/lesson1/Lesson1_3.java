@@ -1,4 +1,4 @@
-package lesson1;
+package lesson.lesson1;
 
 /**
  * 给定一个非负整数num,返回离num最近的,2的某次方

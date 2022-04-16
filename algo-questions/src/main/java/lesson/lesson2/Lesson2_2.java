@@ -1,4 +1,4 @@
-package lesson2;
+package lesson.lesson2;
 
 /**
  * 给定一个数组arr，只能对arr中的一个子数组排序
