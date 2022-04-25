@@ -14,6 +14,7 @@ public class ReverseStack {
         stack.push(3);
         stack.push(2);
         stack.push(1);
+        System.out.println(stack);
         reverse(stack);
         System.out.println(stack);
     }
