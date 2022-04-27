@@ -17,6 +17,7 @@ public class PrintAllPermutation {
 
     /**
      * 使用交换的方式
+     * 在每个位置上，尝试和每个数都交换一边
      */
     public static List<String> printPermutation2(String s) {
         char[] chars = s.toCharArray();
