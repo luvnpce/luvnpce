@@ -68,6 +68,7 @@ public class LeetCode_1755_ClosestSubsequenceSum {
 
     /**
      * 计算累加和
+     * 返回总共有多少个累加和
      */
     private static int process(int[] nums, int index, int end, int sum, int fill, int[] arr) {
         if (index == end) {
