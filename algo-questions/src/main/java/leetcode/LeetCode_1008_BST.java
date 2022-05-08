@@ -22,6 +22,8 @@ public class LeetCode_1008_BST {
      * 最优解 O(N)
      * 通过使用单调栈生成数组bigger[]，
      * bigger[i]代表离i最近且大于它的数的位置
+     * ==================================
+     * 这里还能继续优化常量时间，通过数组来实现stack的功能
      */
     public static TreeNode optimal(int[] nums) {
         if (nums == null || nums.length == 0) {
