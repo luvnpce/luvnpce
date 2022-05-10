@@ -1,4 +1,4 @@
-package lesson.lesson4;
+package lesson.lesson5;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
  * 给定一颗二叉树的头节点head
  * 返回head整棵树上有多少棵相等子树
  */
-public class Lesson4_6 {
+public class Lesson5_1 {
 
 
     /**
