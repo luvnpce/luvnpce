@@ -21,6 +21,9 @@ package leetcode;
  */
 public class LeetCode_1707_MaximumXor {
 
+    /**
+     * 详细思路可以参考Lesson6_1, 这道题的基础版
+     */
     public static int[] solution(int[] nums, int[][] queries) {
         TrieNum trieNum = new TrieNum();
         for (int num : nums) {
